@@ -1,4 +1,6 @@
 <?php
+	
+	
 	//session_start();
 	$conn =mysqli_connect("localhost", "root", "iti", "store");
 	//echo "connected";
@@ -79,11 +81,14 @@
 	function subCatProds($subCatId){
 		global $conn; 
 		$query = "SELECT P.* FROM product P, sub_category WHERE P.sub_cat_id = `sub_category`.id AND sub_cat_id =$subCatId" ;
-		$product = mysqli_query($conn, $query);
-		while ($row = mysqli_fetch_array($product)) {
-			$data []= $row;
-		}
-		return $data;
+			$product = mysqli_query($conn, $query);
+			if(sizeof($product)> 0)
+			while ($row = mysqli_fetch_array($product))
+			{
+				$data []= $row;
+			}
+			return $data;
+
 	}
 
 	function oneSubCatProd($id){
@@ -96,11 +101,8 @@
 	//user_id 	product_id  order_date 	status 	price 	image 
  	function insertProd($user_id,$product_id,$name,$order_date,$status,$price,$image) {
  		global $conn;
-		$query = "INSERT INTO orders(`user_id`, `product_id`,`name`,`order_date`, `status`,`price`,`image`) 
-								VALUES ($user_id,$product_id,$name,$order_date,$status,$price,$image)";
-
-		// $query = "INSERT INTO orders(`user_id`, `product_id`,`name`,`order_date`, `status`,`price`,`image`) 
-		// 						VALUES (19,20,"frtdtrdrt",null,0,5000,"img2")";
+		$query = "INSERT INTO orders(id,user_id, product_id,name,order_date, status,price,image) 
+								VALUES (null,'$user_id','$product_id','$name','$order_date','$status','$price','$image')";
 														
 		$result  = mysqli_query($conn,$query);
 		return mysqli_insert_id($conn);
@@ -108,7 +110,7 @@
 
 	function getUserMail(){
 		
-		$query = "SELECT `email` FROM orders , `user` WHERE orders.`user_id` = `user`.`id`"; 
+		$query = "SELECT email FROM orders , user WHERE orders.user_id` = `user`.`id`"; 
 		//SELECT `email` FROM orders , `user`WHERE orders.`user_id` = `user`.`id` AND `user`.`id` =1
 		$email = mysqli_query($conn, $query);
 		$row = mysqli_fetch_assoc($category);
@@ -157,4 +159,5 @@
 		}
 		return $data;
 	}
+
 ?>

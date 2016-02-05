@@ -170,22 +170,30 @@ amet consectetuer </a></h6>
 					<!-- ******************************************************************** -->
 						<?php
 						$products = subCatProds($_GET['id']);  //return products of sub category
-						foreach ($products as $key => $value) {
-						?>
-							<div class="col-md-4 bottom-cd simpleCart_shelfItem">
-						<div class="product-at ">
-							<a href="single.php?id=<?php echo $value['id']; ?>"><img class="img-responsive" src="<?php echo $value['image']; ?>" alt="">
-							<div class="pro-grid">
-										<span id="know_more"><?php echo $value['price']?></span>   <!-- added -->  
+						if($products)
+						{	
+							foreach ($products as $key => $value) {
+							?>
+								<div class="col-md-4 bottom-cd simpleCart_shelfItem">
+							<div class="product-at ">
+								<a href="single.php?id=<?php echo $value['id']; ?>"><img class="img-responsive" src="<?php echo $value['image']; ?>" alt="">
+								<div class="pro-grid">
+											<span id="know_more"><?php echo $value['price']?></span>   <!-- added -->  
+								</div>
+							</a>	
 							</div>
-						</a>	
+							<p class="tun">It is a long established fact that a reader</p>
+							
+							<a href="single.php?id=<?php echo $value['id']; ?>" class="item_add"><p class="num"><i> </i><?php echo $value['price']?></p></a>						
 						</div>
-						<p class="tun">It is a long established fact that a reader</p>
-						
-						<a href="single.php?id=<?php echo $value['id']; ?>" class="item_add"><p class="num"><i> </i><?php echo $value['price']?></p></a>						
-					</div>
 						<?php
+							}
 						}
+						else
+						{
+							echo "<p class='tun'>Sorry no products here yet </p>";
+						}
+
 					?>
 					<!-- ******************************************************************* -->
 					

@@ -41,8 +41,15 @@ include "menu.php";
 // }else{
 // 	echo "no session set! ";
 // }
+$user_id = $_SESSION['user_id'];
+//echo $user_id;
 $id = $_GET['id'];
 $product = oneProd($id);
+$name = $product['name'];
+$image = $product["image"];
+$price = $product["price"];
+$date = $product["add_date"];
+$status = $product["status"];
 ?>
 <!--content-->
 <!---->
@@ -178,23 +185,11 @@ amet consectetuer </a></h6>
 </div>
 <!-- FlexSlider -->
 <script defer src="js/jquery.flexslider.js"></script>
+<script defer src="single-cart.js"></script>
+
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
-<script>
-// Can also be used with $(document).ready()
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlNav: "thumbnails"
-  });
-});
 
-$("body").on('click', "#addItem", function() {
-	
-	
-		// alert("inserted");
-});
-</script>
 	</div>	
 		<div class="col-md-7 single-top-in simpleCart_shelfItem">
 			<div class="single-para ">
@@ -222,6 +217,7 @@ $("body").on('click', "#addItem", function() {
 						magna aliquam erat </p> -->
 						
 						<?php
+							$prodId = $product['id'];
 							$colors = $product['color'];
 							$color = split(",", $colors);
 							$sizes = $product['size'];
@@ -256,7 +252,7 @@ $("body").on('click', "#addItem", function() {
 								<div class="clearfix"> </div>
 							</ul>
 						</div>
-							<a href="#" class="add-cart item_add" id="addItem">ADD TO CART</a>
+							<a href="#" class="add-cart item_add" id="addItem" value_id="<?php echo $prodId;?>" userid="<?php echo $user_id;?>" name="<?php echo $name;?>" date="<?php echo $date;?>"status="<?php echo $status;?>" price="<?php echo $price;?>" image="<?php echo $image;?>">ADD TO CART</a>
 						</div>
 					</div>
 				<div class="clearfix"> </div>

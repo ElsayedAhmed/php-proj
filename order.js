@@ -12,6 +12,7 @@ $(function()
             {
                 //$(this).addClass('has-success has-feedback');
                 var users= JSON.parse(response);
+             
                 HTMLTXT='<thead>';
 				HTMLTXT+='<tr>';
 				HTMLTXT+='<th>User Name</th>';

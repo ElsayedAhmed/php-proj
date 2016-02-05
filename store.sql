@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2016 at 04:39 PM
+-- Generation Time: Feb 04, 2016 at 11:39 AM
 -- Server version: 5.5.46-0ubuntu0.14.04.2
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -72,23 +72,29 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
-  `quantity` int(10) unsigned NOT NULL,
+  `name` varchar(50) NOT NULL,
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` int(1) unsigned NOT NULL,
+  `price` float NOT NULL,
+  `image` varchar(50) NOT NULL,
   PRIMARY KEY (`id`,`user_id`,`product_id`),
   KEY `user_id` (`user_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `order_date`, `status`) VALUES
-(1, 12, 11, 1, '2016-01-31 19:06:25', 1),
-(2, 2, 12, 3, '2016-01-18 22:00:00', 1),
-(3, 26, 12, 1, '2016-01-31 19:06:30', 1),
-(4, 12, 12, 3, '2016-01-31 19:06:34', 1);
+INSERT INTO `orders` (`id`, `user_id`, `product_id`, `name`, `order_date`, `status`, `price`, `image`) VALUES
+(1, 12, 11, '', '2016-01-31 19:06:25', 1, 0, ''),
+(2, 2, 12, '', '2016-01-18 22:00:00', 1, 0, ''),
+(3, 26, 12, '', '2016-01-31 19:06:30', 1, 0, ''),
+(4, 12, 12, '', '2016-01-31 19:06:34', 1, 0, ''),
+(5, 1, 20, 'holiday-dress', '2014-08-12 08:14:54', 1, 500, 'productimages/kids-holiday-dresses-500x500.jpg'),
+(6, 1, 20, 'holiday-dress', '2014-08-12 08:14:54', 1, 500, 'productimages/kids-holiday-dresses-500x500.jpg'),
+(7, 1, 20, 'holiday-dress', '2014-08-12 08:14:54', 1, 500, 'productimages/kids-holiday-dresses-500x500.jpg'),
+(8, 1, 18, 'shirt-one', '2016-02-02 09:16:06', 1, 120, 'productimages/boys.jpg');
 
 -- --------------------------------------------------------
 
@@ -109,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `status` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `product`
@@ -183,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `active` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `user`

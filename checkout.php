@@ -42,54 +42,18 @@ $userProducts = getUsersOrder($id);
 
 ?>
  <script>$(document).ready(function(c) {
-	$('.close2').on('click', function(c){
-			$('.cart-header2').fadeOut('slow', function(c){
-		$('.cart-header2').remove();
+		$('.close2').on('click', function(c){
+				$('.cart-header2').fadeOut('slow', function(c){
+			$('.cart-header2').remove();
 		});
-	});	  
-});
+		});	  
+		});
+
  // $("body").on('click', function(event) {
  // 	event.preventDefault();
  // 	alert("ay haga");
  // });
  </script>
-
- <script type="text/javascript">
- $("#add_item").on('click', function(event) {
- 	// var $id = $(#);
-	var user_id = 6;
-	var product_id = 5;
-	var quantity =$("#qty").val();
-	var order_date=$("#date").val();
-	var status = 1;
-	$.$.ajax({
-		url: 'order-server.php',
-		type: 'POST',
-		data: {
-			user_id: user_id,
-			product_id:product_id,
-			quantity:quantity,
-			order_date:order_date,
-			status:status
-		},
-	})
-	success:(function() {
-		console.log("success");
-		alert("inserted");
-	})
-	.fail(function() {
-		console.log("error");
-	})
-	.always(function() {
-		console.log("complete");
-	});
-	
-
- });
-
-  </script>
-
-
 
  <script>$(document).ready(function(c) {
 	$('.close1').on('click', function(c){
@@ -113,17 +77,17 @@ $userProducts = getUsersOrder($id);
 				 <div class="close1"> </div>
 				 <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
-					    <img id="img" src="<?php echo $value['Pimage']; ?>" class="img-responsive" alt=""/>
+					    <img src="<?php echo $value['Pimage']; ?>" class="img-responsive" alt=""/>
 
 						</div>
 					   <div class="cart-item-info">
-						<h1><span id="name"><?php echo $value['Pname'];?></span></h1>
+						<h1><span><?php echo $value['Pname'];?></span></h1>
 						
 						<!-- <h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3> -->
 						<ul class="Order Date">
-							<li id="date"><p>Order Date : <?php echo $value['order_date'];?></p></li>
-							<li id="qty"><p>Qty : <?php echo $value['quantity'];?></p></li>
-							<li id="price"><p>Price: <?php echo $value['price'];?></p></li>
+							<li><p>Order Date : <?php echo $value['order_date'];?></p></li>
+							<li><p>Qty : <?php echo $value['quantity'];?></p></li>
+							<li><p>Price: <?php echo $value['price'];?></p></li>
 <!-- 							<li><p>Price: <?php echo $value['price'];?></p></li>
  -->						</ul>
 						
@@ -164,7 +128,7 @@ $userProducts = getUsersOrder($id);
 			
 			 
 			 <div class="clearfix"></div>
-			 <a class="order" href="#" id="add_item">Place Order</a>
+			 <a class="order" href="#">Place Order</a>
 			 <div class="total-item">
 				 <h3>OPTIONS</h3>
 				 <h4>COUPONS</h4>
